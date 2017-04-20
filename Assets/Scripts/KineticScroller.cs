@@ -16,7 +16,9 @@ public class KineticScroller : MonoBehaviour {
             controllerRigidbody.isKinematic = true;
             controllerRigidbody.useGravity = true;
         }
+
         fixedJoint = gameObject.AddComponent<FixedJoint>();
+        fixedJoint.anchor = transform.InverseTransformPoint(attachPoint.transform.position);
         fixedJoint.connectedBody = controllerRigidbody;
         fixedJoint.breakForce = Mathf.Infinity;
         fixedJoint.breakTorque = Mathf.Infinity;
