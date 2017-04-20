@@ -21,7 +21,6 @@ public class TouchController : MonoBehaviour {
     void Start() {
         deferredTriggerExit = false;
         trackedObj = GetComponent<SteamVR_TrackedObject>();
-        Debug.Log("TouchController[" + trackedObj.index + "] start");
         DetectVRHardware();
     }
 
@@ -32,7 +31,6 @@ public class TouchController : MonoBehaviour {
         } else {
             hardware = "htc_vive";
         }
-        Debug.Log("hardware=" + hardware);
     }
 
     // Update is called once per frame
@@ -48,9 +46,6 @@ public class TouchController : MonoBehaviour {
             if (pickup != null && pickup.GetComponent<TouchableController>()) {
                 pickup.GetComponent<TouchableController>().onTriggerDown.Invoke(this.transform, (int)trackedObj.index);
                 triggerDown = true;
-                Debug.Log("in here");
-            } else {
-            
             }
         }
 

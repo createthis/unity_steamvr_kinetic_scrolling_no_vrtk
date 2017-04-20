@@ -8,7 +8,6 @@ public class KineticScroller : MonoBehaviour {
     private Rigidbody rigidBody;
 
     public void OnTriggerDown(Transform controller, int controllerIndex) {
-        Debug.Log("OnTriggerDown");
         GameObject attachPoint = controller.GetComponent<TouchController>().attachPoint;
 
         Rigidbody controllerRigidbody = attachPoint.GetComponent<Rigidbody>();
@@ -21,7 +20,6 @@ public class KineticScroller : MonoBehaviour {
         fixedJoint.connectedBody = controllerRigidbody;
         fixedJoint.breakForce = Mathf.Infinity;
         fixedJoint.breakTorque = Mathf.Infinity;
-        Debug.Log("fixedJoint=" + fixedJoint);
     }
 
     public void OnTriggerUpdate(Transform controller, int controllerIndex) {
@@ -29,7 +27,6 @@ public class KineticScroller : MonoBehaviour {
     }
 
     public void OnTriggerUp(Transform controller, int controllerIndex) {
-        Debug.Log("OnTriggerUp");
         if (!fixedJoint) return;
         fixedJoint.connectedBody = null;
         Destroy(fixedJoint);
