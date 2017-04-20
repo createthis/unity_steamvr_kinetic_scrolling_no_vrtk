@@ -5,7 +5,7 @@ using UnityEngine;
 public class KineticScroller : MonoBehaviour {
     public FixedJoint fixedJoint;
 
-    private new Rigidbody rigidbody;
+    private Rigidbody rigidBody;
 
     public void OnTriggerDown(Transform controller, int controllerIndex) {
         Debug.Log("OnTriggerDown");
@@ -34,15 +34,15 @@ public class KineticScroller : MonoBehaviour {
         fixedJoint.connectedBody = null;
         Destroy(fixedJoint);
         SteamVR_Controller.Device device = SteamVR_Controller.Input((int)controllerIndex);
-        rigidbody.velocity = device.velocity;
-        rigidbody.angularVelocity = device.angularVelocity;
+        rigidBody.velocity = device.velocity;
+        rigidBody.angularVelocity = device.angularVelocity;
     }
 
     // Use this for initialization
     void Start() {
-        rigidbody = GetComponent<Rigidbody>();
-        rigidbody.velocity = Vector3.zero;
-        rigidbody.angularVelocity = Vector3.zero;
+        rigidBody = GetComponent<Rigidbody>();
+        rigidBody.velocity = Vector3.zero;
+        rigidBody.angularVelocity = Vector3.zero;
     }
 
     // Update is called once per frame
